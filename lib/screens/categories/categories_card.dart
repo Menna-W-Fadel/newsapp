@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:newsapp/screens/categories/category_model.dart';
+import 'package:newsapp/screens/categories/models/category_model.dart';
 
 class CategoriesCard extends StatelessWidget {
   const CategoriesCard(
@@ -14,12 +14,12 @@ class CategoriesCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: categoryModel.containerColor,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25),
-              topRight: Radius.circular(25),
+              topLeft: const Radius.circular(25),
+              topRight: const Radius.circular(25),
               bottomLeft:
-                  index.isEven ? Radius.circular(25) : Radius.circular(0),
+                  index.isEven ? const Radius.circular(25) : const Radius.circular(0),
               bottomRight:
-                  index.isOdd ? Radius.circular(25) : Radius.circular(0),
+                  index.isOdd ? const Radius.circular(25) : const Radius.circular(0),
             )),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

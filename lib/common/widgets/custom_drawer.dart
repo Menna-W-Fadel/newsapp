@@ -3,13 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:newsapp/common/app_colors.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  const CustomDrawer({required this.onSelect, super.key});
+  final Function(DrawerItems) onSelect;
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       width: 350.w,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       child: Column(
         children: [
           Container(
@@ -22,6 +23,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            onTap: () {
+              onSelect(DrawerItems.categories);
+              Navigator.of(context).pop();
+            },
             leading: const Icon(
               Icons.list,
               size: 25,
@@ -32,6 +37,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            onTap: () {
+              onSelect(DrawerItems.settings);
+              Navigator.of(context).pop();
+            },
             leading: const Icon(
               Icons.settings,
               size: 25,
@@ -46,3 +55,5 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 }
+
+enum DrawerItems { settings, categories }
