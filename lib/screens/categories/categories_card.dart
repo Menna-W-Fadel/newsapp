@@ -16,10 +16,12 @@ class CategoriesCard extends StatelessWidget {
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(25),
               topRight: const Radius.circular(25),
-              bottomLeft:
-                  index.isEven ? const Radius.circular(25) : const Radius.circular(0),
-              bottomRight:
-                  index.isOdd ? const Radius.circular(25) : const Radius.circular(0),
+              bottomLeft: index.isEven
+                  ? const Radius.circular(25)
+                  : const Radius.circular(0),
+              bottomRight: index.isOdd
+                  ? const Radius.circular(25)
+                  : const Radius.circular(0),
             )),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

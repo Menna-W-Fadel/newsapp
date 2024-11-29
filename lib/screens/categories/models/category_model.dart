@@ -6,7 +6,8 @@ class CategoryModel {
   final String title;
   final Color containerColor;
   const CategoryModel(
-      {required this.id,required this.imagePath,
+      {required this.id,
+      required this.imagePath,
       required this.title,
       required this.containerColor});
 }

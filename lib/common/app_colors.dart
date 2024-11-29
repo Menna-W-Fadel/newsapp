@@ -7,7 +7,7 @@ class AppColors {
   static Color brightGold = const Color(0xffffc458);
   static Color greyColor = const Color(0xff79828B);
   static Color blackTextColor = const Color(0xff42505C);
-   static Color lightGreyColor = const Color(0xffA3A3A3);
+  static Color lightGreyColor = const Color(0xffA3A3A3);
 
   ///DarkMode
 }

@@ -6,39 +6,29 @@ import 'package:newsapp/screens/categories/models/category_model.dart';
 
 class CategoriesView extends StatelessWidget {
   static String routeName = "categoriesScreen";
-  const CategoriesView({required this.onSelect,super.key});
+  const CategoriesView({required this.onSelect, super.key});
   final Function(CategoryModel) onSelect;
 
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [
       CategoryModel(
-          id: "1",
+          id: "sports",
           imagePath: AppImages.ball,
           title: "Sports",
           containerColor: const Color(0xffC91C22)),
       CategoryModel(
-          id: "2",
-          imagePath: AppImages.politics,
-          title: "Politics",
-          containerColor: const Color(0xff003E90)),
-      CategoryModel(
-          id: "3",
+          id: "health",
           imagePath: AppImages.health,
           title: "Health",
           containerColor: const Color(0xffED1E79)),
       CategoryModel(
-          id: "4",
+          id: "business",
           imagePath: AppImages.business,
           title: "Business",
           containerColor: const Color(0xffCF7E48)),
       CategoryModel(
-          id: "5",
-          imagePath: AppImages.enviroment,
-          title: "Enviroment",
-          containerColor: const Color(0xff4882CF)),
-      CategoryModel(
-          id: "6",
+          id: "science",
           imagePath: AppImages.science,
           title: "Science",
           containerColor: const Color(0xffF2D352)),
@@ -64,7 +54,8 @@ class CategoriesView extends StatelessWidget {
                   mainAxisSpacing: 20.h,
                   crossAxisSpacing: 25.w,
                 ),
-                itemBuilder: (context, index) => GestureDetector(onTap: () => onSelect(categories[index]),
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () => onSelect(categories[index]),
                   child: CategoriesCard(
                       index: index, categoryModel: categories[index]),
                 ),
