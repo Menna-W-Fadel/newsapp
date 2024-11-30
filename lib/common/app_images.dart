@@ -7,5 +7,5 @@ class AppImages {
   static String health = "assets/images/health.png";
   static String science = "assets/images/science.png";
   static String politics = "assets/images/Politics.png";
-  static String newsTest = "assets/images/NewsTest.png";
+  static String noImage = "assets/images/no-image.jpg";
 }

@@ -14,7 +14,6 @@ class Sources {
   static List<Sources> fromList(List<Map<String, dynamic>> list) {
     return list.map(Sources.fromJson).toList();
   }
-
 }
 
 class Sources1 {
