@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/common/app_images.dart';
 import 'package:newsapp/common/widgets/custom_drawer.dart';
+import 'package:newsapp/common/widgets/custom_search_bar.dart';
 import 'package:newsapp/screens/categories/categories_view.dart';
-import 'package:newsapp/screens/categories/category_details_view.dart';
 import 'package:newsapp/screens/categories/models/category_model.dart';
+import 'package:newsapp/screens/categories/widgets/search_screen.dart';
+import 'package:newsapp/screens/categories/widgets/sources_widget.dart';
 import 'package:newsapp/screens/settings/settings_view.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,6 +20,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   DrawerItems selectedView = DrawerItems.categories;
   CategoryModel? selectedCategory;
+  bool isSearchClicked = false;
+  bool finished = false;
+  TextEditingController searchBarController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,34 +41,39 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           appBar: AppBar(
-            title: selectedCategory != null
-                ? Text(selectedCategory!.title)
-                : selectedView == DrawerItems.settings
-                    ? const Text("Settings") //TODO:localization
+            title: selectedCategory != null && isSearchClicked
+                ? CustomSearchBar(
+                    controller: searchBarController,
+                    closedClicked: () => setState(() {
+                          isSearchClicked = false;
+                        }),
+                    searchClicked: () => setState(() {
+                          isSearchClicked = true;
+                          finished = true;
+                        }))
+                : selectedCategory != null
+                    ? Text(selectedCategory?.title ?? "category")
                     : const Text("News App"),
-            actions: selectedCategory != null
-                ? [
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.search,
-                          size: 30,
-                        )),
-                    SizedBox(
-                      width: 10.w,
-                    )
-                  ]
-                : null,
+            actions: [
+              if (selectedCategory != null && !isSearchClicked)
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isSearchClicked = true;
+                      });
+                    },
+                    icon: const Icon(Icons.search))
+            ],
           ),
           body: selectedCategory != null
-              ? CategoryDetailsView(id: selectedCategory!.id)
+              ? isSearchClicked&& finished
+                  ? SearchScreen(categoryId: selectedCategory?.id??"",searchText:searchBarController.text)
+                  : SourcesWidget(
+                      id: selectedCategory?.id ?? "", searching: true)
               : selectedView == DrawerItems.categories
                   ? CategoriesView(
-                      onSelect: (value) {
-                        selectedCategory = value;
+                      onSelect: (p0) {
+                        selectedCategory = p0;
                         setState(() {});
                       },
                     )

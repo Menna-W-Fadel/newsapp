@@ -5,9 +5,9 @@ import 'package:newsapp/screens/categories/models/sources_model.dart';
 import 'package:newsapp/screens/categories/widgets/news_list.dart';
 
 class SourceList extends StatefulWidget {
-  const SourceList(
-      {required this.sources,super.key});
+  const SourceList({required this.sources, required this.searching, super.key});
   final List<Sources1> sources;
+  final bool searching;
   @override
   State<SourceList> createState() => _SourceListState();
 }
@@ -16,9 +16,8 @@ class _SourceListState extends State<SourceList> {
   String? selectedSourcesId;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    selectedSourcesId =widget.sources.isNotEmpty? widget.sources[0].id:null;
+    selectedSourcesId = widget.sources.isNotEmpty ? widget.sources[0].id : null;
   }
 
   @override
@@ -55,7 +54,10 @@ class _SourceListState extends State<SourceList> {
             ),
           ),
         ),
-       if(selectedSourcesId!=null) NewsList(sourceId: selectedSourcesId!),
+        if (selectedSourcesId != null && !widget.searching)
+          NewsList(sourceId: selectedSourcesId!)
+        else if (selectedSourcesId != null && widget.searching)
+          NewsList(sourceId: selectedSourcesId!),
       ],
     );
   }

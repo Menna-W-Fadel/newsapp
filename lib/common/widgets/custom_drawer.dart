@@ -18,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
             height: 200.h,
             color: AppColors.primaryColor,
             child: Text(
-              "News App!", //TODO:localization
+              "News App!", 
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -32,7 +32,7 @@ class CustomDrawer extends StatelessWidget {
               size: 25,
             ),
             title: Text(
-              "Categories", //TODO:localization
+              "Categories", 
               style: TextStyle(fontSize: 22.sp),
             ),
           ),
@@ -46,7 +46,7 @@ class CustomDrawer extends StatelessWidget {
               size: 25,
             ),
             title: Text(
-              "Settings", //TODO:localization
+              "Settings", 
               style: TextStyle(fontSize: 22.sp),
             ),
           ),
