@@ -28,7 +28,7 @@ class CategoriesCard extends StatelessWidget {
           children: [
             Image.asset(
               categoryModel.imagePath,
-              height: 100.h,
+              height: 90.h,
               fit: BoxFit.contain,
             ),
             Text(
@@ -36,7 +36,7 @@ class CategoriesCard extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(fontSize: 22.sp, fontWeight: FontWeight.w400),
+                  .copyWith(fontSize: 20.sp, fontWeight: FontWeight.w400),
             )
           ],
         ),

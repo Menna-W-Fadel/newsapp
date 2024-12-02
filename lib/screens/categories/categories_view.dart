@@ -18,6 +18,11 @@ class CategoriesView extends StatelessWidget {
           title: "Sports",
           containerColor: const Color(0xffC91C22)),
       CategoryModel(
+          id: "technology",
+          imagePath: AppImages.politics,
+          title: "Technology",
+          containerColor: const Color(0xff003E90)),
+      CategoryModel(
           id: "health",
           imagePath: AppImages.health,
           title: "Health",
@@ -27,6 +32,11 @@ class CategoriesView extends StatelessWidget {
           imagePath: AppImages.business,
           title: "Business",
           containerColor: const Color(0xffCF7E48)),
+      CategoryModel(
+          id: "entertainment",
+          imagePath: AppImages.enviroment,
+          title: "Entertainment",
+          containerColor: const Color(0xff4882CF)),
       CategoryModel(
           id: "science",
           imagePath: AppImages.science,
@@ -49,7 +59,7 @@ class CategoriesView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 155.h,
+                  mainAxisExtent: 150.h,
                   crossAxisCount: 2,
                   mainAxisSpacing: 20.h,
                   crossAxisSpacing: 25.w,

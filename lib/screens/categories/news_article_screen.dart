@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:newsapp/common/app_colors.dart';
 
 import 'package:newsapp/screens/categories/models/news_model/article.dart';
 
@@ -42,38 +43,47 @@ class _NewsArticleScreenState extends State<NewsArticleScreen> {
           appBar: AppBar(
             title: Text(widget.articleDetails.title ?? "news title"),
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              NewsCard(newsModel: widget.articleDetails),
-              SizedBox(
-                height: 30.h,
-              ),
-              SizedBox(
-                width: 360.w,
-                height: 237.h,
-                child: Text(
-                  widget.articleDetails.description ?? "",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w300, fontSize: 13.sp),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                NewsCard(newsModel: widget.articleDetails),
+                SizedBox(
+                  height: 30.h,
                 ),
-              ),
-              Row(
-                children: [
-                  const Spacer(),
-                  TextButton.icon(
-                    onPressed: () =>
-                        _launchURL(Uri.parse(widget.articleDetails.url ?? '')),
-                    label: Text(
-                      "View Full Article",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500, fontSize: 14.sp),
-                    ),
-                    icon: const Icon(Icons.navigate_next_rounded),
+                SizedBox(
+                  width: 360.w,
+                  height: 200.h,
+                  child: Text(
+                    widget.articleDetails.description ?? "",
+                    style:
+                        TextStyle(fontWeight: FontWeight.w300, fontSize: 13.sp),
                   ),
-                ],
-              )
-            ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30.0, bottom: 10),
+                      child: TextButton.icon(
+                        onPressed: () => _launchURL(
+                            Uri.parse(widget.articleDetails.url ?? '')),
+                        label: Text(
+                          "View Full Article",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 14.sp),
+                        ),
+                        icon: const Icon(Icons.navigate_next_rounded),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 40.h,
+                )
+              ],
+            ),
           ),
         ));
   }
